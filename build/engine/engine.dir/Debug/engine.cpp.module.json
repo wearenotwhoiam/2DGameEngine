@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "engine.dir\\Debug\\engine.obj",
+            "outputs": [
+                "C:\\GameDev\\C++\\ECS\\build\\engine\\engine.dir\\Debug\\vc143.pdb",
+                "engine.dir\\Debug\\"
+            ],
+            "requires": []
+        }
+    ]
+}

@@ -1,0 +1,37 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\gamedev\\c++\\ecs\\engine\\src\\core\\engine.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\gamedev\\c++\\ecs\\build\\engine\\engine.dir\\debug\\cmake_pch.pch",
+        "Includes": [
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\core\\engine.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\core\\input.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\core\\dispatcher.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\core\\event.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\core\\typeid.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\math\\vec2.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\ecs\\scene.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\ecs\\systems\\testsystem.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\ecs\\system.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\ecs\\entity.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\ecs\\registry.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\ecs\\ecs.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\assets\\registry.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\assets\\font.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\assets\\asset.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\assets\\audio.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\assets\\tilemap.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\assets\\texture.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\assets\\animation.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\ecs\\components\\common.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\ecs\\systems\\spriterenderersystem.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\ecs\\components\\graphics.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\ecs\\systems\\textrenderersystem.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\ecs\\systems\\frameanimationsystem.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\events\\system.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

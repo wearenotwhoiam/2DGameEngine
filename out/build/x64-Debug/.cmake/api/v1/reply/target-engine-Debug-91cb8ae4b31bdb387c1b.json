@@ -1,0 +1,231 @@
+{
+	"archive" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "/machine:x64",
+				"role" : "flags"
+			}
+		]
+	},
+	"artifacts" : 
+	[
+		{
+			"path" : "bin/engine.lib"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"add_definitions",
+			"target_include_directories",
+			"target_precompile_headers"
+		],
+		"files" : 
+		[
+			"engine/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 6,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 9,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 10,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 15,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 28,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 25,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "/DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd"
+				},
+				{
+					"fragment" : "/YcC:/GameDev/C++/ECS/out/build/x64-Debug/engine/CMakeFiles/engine.dir/cmake_pch.hxx /FpC:/GameDev/C++/ECS/out/build/x64-Debug/engine/CMakeFiles/engine.dir/./cmake_pch.cxx.pch /FIC:/GameDev/C++/ECS/out/build/x64-Debug/engine/CMakeFiles/engine.dir/cmake_pch.hxx"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 2,
+					"define" : "ENGINE_EXPORT"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "_DEBUG"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 4,
+					"path" : "C:/GameDev/C++/ECS/windows/includes"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/GameDev/C++/ECS/engine/src"
+				}
+			],
+			"language" : "CXX",
+			"precompileHeaders" : 
+			[
+				{
+					"backtrace" : 6,
+					"header" : "C:/GameDev/C++/ECS/engine/src/pch.h"
+				}
+			],
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "/DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd"
+				},
+				{
+					"fragment" : "/YuC:/GameDev/C++/ECS/out/build/x64-Debug/engine/CMakeFiles/engine.dir/cmake_pch.hxx /FpC:/GameDev/C++/ECS/out/build/x64-Debug/engine/CMakeFiles/engine.dir/./cmake_pch.cxx.pch /FIC:/GameDev/C++/ECS/out/build/x64-Debug/engine/CMakeFiles/engine.dir/cmake_pch.hxx"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 2,
+					"define" : "ENGINE_EXPORT"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "_DEBUG"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 4,
+					"path" : "C:/GameDev/C++/ECS/windows/includes"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/GameDev/C++/ECS/engine/src"
+				}
+			],
+			"language" : "CXX",
+			"precompileHeaders" : 
+			[
+				{
+					"backtrace" : 6,
+					"header" : "C:/GameDev/C++/ECS/engine/src/pch.h"
+				}
+			],
+			"sourceIndexes" : 
+			[
+				1,
+				2,
+				3
+			]
+		}
+	],
+	"id" : "engine::@4088515cb4035b412499",
+	"name" : "engine",
+	"nameOnDisk" : "engine.lib",
+	"paths" : 
+	{
+		"build" : "engine",
+		"source" : "engine"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3
+			]
+		},
+		{
+			"name" : "Precompile Header File",
+			"sourceIndexes" : 
+			[
+				4
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"path" : "out/build/x64-Debug/engine/CMakeFiles/engine.dir/cmake_pch.cxx",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "engine/src/core/engine.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "engine/src/game.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "engine/src/pch.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"path" : "out/build/x64-Debug/engine/CMakeFiles/engine.dir/cmake_pch.hxx",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

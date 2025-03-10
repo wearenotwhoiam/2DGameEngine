@@ -1,0 +1,14 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\gamedev\\c++\\ecs\\game\\src\\game.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\gamedev\\c++\\ecs\\build\\game\\game.dir\\debug\\cmake_pch.pch",
+        "Includes": [
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\core\\entry.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\core\\engine.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

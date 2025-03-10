@@ -1,0 +1,9 @@
+# ninja log v5
+10	787	7303569219159156	game/CMakeFiles/game.dir/cmake_pch.cxx.obj	e9c8617c7c4710ab
+6	802	7303569219159156	engine/CMakeFiles/engine.dir/cmake_pch.cxx.obj	3e3e8d6a197ec37c
+798	860	7303569219909749	game/CMakeFiles/game.dir/src/game.cpp.obj	c0025d8e50c93280
+814	864	7303569219929570	engine/CMakeFiles/engine.dir/src/pch.cpp.obj	80407406cf59a041
+805	876	7303569219986089	engine/CMakeFiles/engine.dir/src/game.cpp.obj	34e525ffb76cb649
+803	877	7303569219986089	engine/CMakeFiles/engine.dir/src/core/engine.cpp.obj	fe4029fd2f9fe26e
+878	946	7303569220736877	bin/engine.lib	b1e3d4443bfbaf77
+947	1212	7303569223167457	bin/game.exe	db29a826db2be339

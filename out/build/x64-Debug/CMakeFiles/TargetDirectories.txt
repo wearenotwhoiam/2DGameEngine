@@ -1,0 +1,8 @@
+C:/GameDev/C++/ECS/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/GameDev/C++/ECS/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
+C:/GameDev/C++/ECS/out/build/x64-Debug/engine/CMakeFiles/engine.dir
+C:/GameDev/C++/ECS/out/build/x64-Debug/engine/CMakeFiles/edit_cache.dir
+C:/GameDev/C++/ECS/out/build/x64-Debug/engine/CMakeFiles/rebuild_cache.dir
+C:/GameDev/C++/ECS/out/build/x64-Debug/game/CMakeFiles/game.dir
+C:/GameDev/C++/ECS/out/build/x64-Debug/game/CMakeFiles/edit_cache.dir
+C:/GameDev/C++/ECS/out/build/x64-Debug/game/CMakeFiles/rebuild_cache.dir
