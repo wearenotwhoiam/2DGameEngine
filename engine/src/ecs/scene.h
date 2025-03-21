@@ -4,6 +4,7 @@
 #include "systems/textRendererSystem.h"
 #include "systems/frameAnimationSystem.h"
 #include "systems/tilemapRenderSystem.h"
+#include "systems/rigidbodySystem.h"
 #include "assets/registry.h"
 
 namespace engine::ecs
@@ -42,6 +43,32 @@ namespace engine::ecs
 
         ENGINE_INLINE void Start()
         {
+            auto sprite = m_assets.LoadTexture("C:/GameDev/C++/ECS/engine/src/assets/1.png", "test", m_renderer);
+            auto entity = AddEntity("rigidbody");
+            entity.AddComponent<SpriteComponent>().sprite = sprite->id;
+            auto& rb = entity.AddComponent<RigidbodyComponent>();
+            rb.body.gravityScale = 1.f;
+            
+            for(auto& sys : m_systems) {sys->Start();}
+        }
+
+        template<typename T>
+        ENGINE_INLINE void RegisterSystem()
+        {
+            ENGINE_STATIC_ASSERT(std::is_base_of<ecs::System, T>::value);
+            auto newSystem = new T();
+            newSystem->Prepare(&m_registry, m_renderer, &m_assets);
+            this->m_systems.push_back(newSystem);
+        }
+
+    private:
+        std::vector<ecs::System*> m_systems;
+        SDL_Renderer* m_renderer = NULL;
+        ecs::Registry m_registry;
+        AssetRegistry m_assets;
+    };
+}
+
             // //load texture asset
             // auto sprite = m_assets.LoadTexture("C:/GameDev/C++/ECS/engine/src/assets/test.png", "test", m_renderer);
             // //Create Entity
@@ -74,54 +101,34 @@ namespace engine::ecs
             // a.animation = animation->id;
 
             //load texture
-            auto texture = m_assets.LoadTexture("C:/GameDev/C++/ECS/engine/src/assets/tex.png", "", m_renderer);
-//            if(!texture) return;
+//             auto texture = m_assets.LoadTexture("C:/GameDev/C++/ECS/engine/src/assets/tex.png", "", m_renderer);
+//           if(!texture) return;
 
-            //create tilemap asset
-            auto tm = m_assets.AddAsset<TilemapAsset>("tilemap");
-            tm->instance.tilesets.insert(texture->id);
-            tm->instance.colCount = 16;
-            tm->instance.rowCount = 8;
-            tm->instance.tileSize = 64;
+//             //create tilemap asset
+//             auto tm = m_assets.AddAsset<TilemapAsset>("tilemap");
+//             tm->instance.tilesets.insert(texture->id);
+//             tm->instance.colCount = 16;
+//             tm->instance.rowCount = 8;
+//             tm->instance.tileSize = 64;
 
             // ecs::Entity tilemap = AddEntity("tilemap");
             // tilemap.AddComponent<TilemapComponent>().tilemap = tm->id;
 
             //tilemap entity
-           AddEntity("tilemap").AddComponent<TilemapComponent>().tilemap = tm->id;
+        //    AddEntity("tilemap").AddComponent<TilemapComponent>().tilemap = tm->id;
 
-            //turn image into multiple entities
-            for(int col=0; col < tm->instance.colCount; col++)
-            {
-                for(int row=0; row < tm->instance.rowCount; row++)
-                {
-                    ecs::Entity e = AddEntity("tile");
-                    auto& tile = e.AddComponent<TileComponent>();
-                    tile.tileset = texture->id;
-                    tile.ownerTilemap= tm->id;
-                    tile.offsetX = col;
-                    tile.offsetY = row;
-                    tile.row = row;
-                    tile.col = col;
-                }
-            }
-
-            for(auto& sys : m_systems) {sys->Start();}
-        }
-
-        template<typename T>
-        ENGINE_INLINE void RegisterSystem()
-        {
-            ENGINE_STATIC_ASSERT(std::is_base_of<ecs::System, T>::value);
-            auto newSystem = new T();
-            newSystem->Prepare(&m_registry, m_renderer, &m_assets);
-            this->m_systems.push_back(newSystem);
-        }
-
-    private:
-        std::vector<ecs::System*> m_systems;
-        SDL_Renderer* m_renderer = NULL;
-        ecs::Registry m_registry;
-        AssetRegistry m_assets;
-    };
-}
+        //     //turn image into multiple entities
+        //     for(int col=0; col < tm->instance.colCount; col++)
+        //     {
+        //         for(int row=0; row < tm->instance.rowCount; row++)
+        //         {
+        //             ecs::Entity e = AddEntity("tile");
+        //             auto& tile = e.AddComponent<TileComponent>();
+        //             tile.tileset = texture->id;
+        //             tile.ownerTilemap= tm->id;
+        //             tile.offsetX = col;
+        //             tile.offsetY = row;
+        //             tile.row = row;
+        //             tile.col = col;
+        //         }
+        //     }
