@@ -20,7 +20,7 @@ namespace engine::ecs
                 {
                     //check if tile belongs to tilemap
                     auto& tile = tileEntity.GetComponent<TileComponent>();
-                    if(tile.ownerTilemap != tilemapComp && !tilemap.tilesets.count(tile.tileset)) continue;
+                    if(tile.ownerTilemap != tilemapComp || !tilemap.tilesets.count(tile.tileset)) continue;
 
                     //tile position
                     float x = tile.offsetX + transformComp.translate.x;
@@ -35,13 +35,15 @@ namespace engine::ecs
         ENGINE_INLINE void DrawTile(assetID tilesetID, float x, float y, int row, int col, int size, SDL_RendererFlip flip)
         {
             SDL_FRect dstRect = { x * size, y * size, size, size};
-            SDL_Rect srcRect = { row * size, col * size, size, size};
+            SDL_Rect srcRect = { col * size, row * size, size, size};
 
             auto& tileset = m_assets->GetAsset<TextureAsset>(tilesetID)->instance;
 
             SDL_RenderCopyExF(m_renderer, tileset.data, &srcRect, &dstRect, 0, NULL, flip);
 
             SDL_RenderDrawRectF(m_renderer, &dstRect);
+
+        
         }
     };
 

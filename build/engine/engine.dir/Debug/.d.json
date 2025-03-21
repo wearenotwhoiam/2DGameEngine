@@ -29,6 +29,7 @@
             "c:\\gamedev\\c++\\ecs\\engine\\src\\ecs\\components\\graphics.h",
             "c:\\gamedev\\c++\\ecs\\engine\\src\\ecs\\systems\\textrenderersystem.h",
             "c:\\gamedev\\c++\\ecs\\engine\\src\\ecs\\systems\\frameanimationsystem.h",
+            "c:\\gamedev\\c++\\ecs\\engine\\src\\ecs\\systems\\tilemaprendersystem.h",
             "c:\\gamedev\\c++\\ecs\\engine\\src\\events\\system.h"
         ],
         "ImportedModules": [],
