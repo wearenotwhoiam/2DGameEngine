@@ -1,0 +1,16 @@
+{
+  "configurations": [
+    {
+      "name": "configs",
+      "includePath": [
+        "${workspaceFolder}/windows/includes/**",
+        "${workspaceFolder}/engine/src/**"
+      ],
+      "defines": [ "_DEBUG", "ENGINE_EXPORT" ],
+      "cStandard": "c20",
+      "cppStandard": "c++20",
+      "intelliSenseMode": "${default}"
+    }
+  ],
+  "version":  4
+}

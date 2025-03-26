@@ -1,0 +1,10 @@
+^C:\GAMEDEV\C++\2DGAMEENGINE\BUILD\CMAKEFILES\9E029F2A3E2F2819A9805BED573BE2C2\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/GameDev/C++/2DGameEngine -BC:/GameDev/C++/2DGameEngine/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/GameDev/C++/2DGameEngine/build/2DEngine.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

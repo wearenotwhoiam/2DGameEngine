@@ -1,0 +1,6 @@
+C:/GameDev/C++/2DGameEngine/build/CMakeFiles/ALL_BUILD.dir
+C:/GameDev/C++/2DGameEngine/build/CMakeFiles/ZERO_CHECK.dir
+C:/GameDev/C++/2DGameEngine/build/engine/CMakeFiles/engine.dir
+C:/GameDev/C++/2DGameEngine/build/engine/CMakeFiles/ALL_BUILD.dir
+C:/GameDev/C++/2DGameEngine/build/game/CMakeFiles/game.dir
+C:/GameDev/C++/2DGameEngine/build/game/CMakeFiles/ALL_BUILD.dir
