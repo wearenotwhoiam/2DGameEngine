@@ -2,7 +2,7 @@
 #pragma once
 #include "engine.h"
 
-extern Engine::engineConfig Engine::CreateEngine();
+extern Engine::EngineConfig Engine::CreateEngine();
 
 int main(int argc, char** argv)
 {

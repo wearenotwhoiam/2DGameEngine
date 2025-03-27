@@ -91,7 +91,7 @@ protected:
         template<typename T>
         ENGINE_INLINE T* GetAsset(const std::string& name)
         {
-            return m_assets->Get<T>(name);
+            return m_assets->GetAsset<T>(name);
         }
 private:
         ECS::entityID m_entity {INVALID_ID};

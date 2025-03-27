@@ -20,7 +20,7 @@ namespace Engine
 		lastTick = GetTicks();
 	}
 
-	ENGINE_API void RunEngine(const engineConfig& config)
+	ENGINE_API void RunEngine(const EngineConfig& config)
 	{	
 		//SDL Startup										
 		if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
