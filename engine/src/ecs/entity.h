@@ -49,5 +49,7 @@ namespace Engine::ECS
         private:
             entityID entity = INVALID_ID;
             Registry* m_registry = NULL;
+
+            //std::unordered_map<std::string, std::unique_ptr<ScriptInstance>> scripts;
     };
 }

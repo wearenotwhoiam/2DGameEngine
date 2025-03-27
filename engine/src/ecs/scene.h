@@ -80,6 +80,12 @@ namespace Engine::ECS
             auto bgSprite = m_assets.LoadTexture("C:/GameDev/C++/2DGameEngine/resources/bg.png", "bg", m_renderer);
             bgEntity.AddComponent<SpriteComponent>().sprite = bgSprite->id;
 
+            //Spawner 
+            auto spawner = AddEntity("spawner");
+            auto& spawnerScript = spawner.AddComponent<ScriptComponent>();
+            spawnerScript.BindScript<PipeSpawner>();
+            spawnerScript.name = "piperSpawner";
+
             SetupScrollingGround();
             SetupPlayer();
         }
@@ -110,12 +116,10 @@ namespace Engine::ECS
 
         ENGINE_INLINE void SetupScrollingGround()
         {
-             auto grEntity = AddEntity("ground");
+            //Ground Entity
+            auto grEntity = AddEntity("ground");
             ////Scripting
- 
-            auto& pipeSpawnerScript = grEntity.AddComponent<ScriptComponent>();
-            pipeSpawnerScript.BindScript<PipeSpawner>();
-            pipeSpawnerScript.name = "pipeSpawner";
+            
             auto& grScrollScript = grEntity.AddComponent<ScriptComponent>();
             grScrollScript.BindScript<ScrollingGround>();
             grScrollScript.name = "scrollingGround";
