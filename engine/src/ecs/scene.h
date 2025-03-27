@@ -7,7 +7,9 @@
 #include "systems/rigidbodySystem.h"
 #include "systems/collisionSystem.h"
 #include "systems/scriptSystem.h"
+
 #include "../scripts/playerController.h"
+#include "../scripts/scrollingGround.h"
 
 #include "assets/registry.h"
 
@@ -17,13 +19,14 @@ namespace Engine::ECS
     {
         ENGINE_INLINE Scene(SDL_Renderer* renderer): m_renderer(renderer)
         {
+            RegisterSystem<ECS::ScriptSystem>();
            // RegisterSystem<ECS::TestSystem>();
             RegisterSystem<ECS::RigidbodySystem>();
             RegisterSystem<ECS::SpriteRendererSystem>();
-            RegisterSystem<ECS::TextRendererSystem>();
-            RegisterSystem<ECS::FrameAnimationSystem>();
-            RegisterSystem<ECS::TilemapRendererSystem>();
-            RegisterSystem<ECS::ScriptSystem>();
+            //RegisterSystem<ECS::TextRendererSystem>();
+            //RegisterSystem<ECS::FrameAnimationSystem>();
+            //RegisterSystem<ECS::TilemapRendererSystem>();
+            
             RegisterSystem<ECS::CollisionSystem>();
         }
 
@@ -59,6 +62,12 @@ namespace Engine::ECS
 
         ENGINE_INLINE void Start()
         {
+            SetupScene();
+            for(auto& sys : m_systems) {sys->Start();}
+        }
+
+        ENGINE_INLINE void SetupScene()
+        {
             //Player Sprites
             auto flyingSprite = m_assets.LoadTexture("C:/GameDev/C++/2DGameEngine/resources/fly.png", "flyingSprite", m_renderer);
             auto deadSprite = m_assets.LoadTexture("C:/GameDev/C++/2DGameEngine/resources/dead.png", "deadSprite", m_renderer);
@@ -66,18 +75,37 @@ namespace Engine::ECS
             //Obstacle Sprites
             auto pipeSprite = m_assets.LoadTexture("C:/GameDev/C++/2DGameEngine/resources/pipe.png", "pipeSprite", m_renderer);
 
-            //BG Texture
-            auto bgSprite = m_assets.LoadTexture("C:/GameDev/C++/2DGameEngine/resources/bg.png", "bg", m_renderer);
-            auto groundSprite = m_assets.LoadTexture("C:/GameDev/C++/2DGameEngine/resources/ground.png", "ground", m_renderer);
-
             //Text Font
-            auto fontSprite = m_assets.LoadFont("C:/GameDev/C++/2DGameEngine/resources/font..ttf", "font", 30);
+            auto fontSprite = m_assets.LoadFont("C:/GameDev/C++/2DGameEngine/resources/font.ttf", "font", 30);
 
             //Background Entity
-            auto bgEntity = AddEntity("Background");
+            auto bgEntity = AddEntity("background");
+            auto bgSprite = m_assets.LoadTexture("C:/GameDev/C++/2DGameEngine/resources/bg.png", "bg", m_renderer);
             bgEntity.AddComponent<SpriteComponent>().sprite = bgSprite->id;
-            
-            for(auto& sys : m_systems) {sys->Start();}
+
+            SetupScrollingGround();
+        }
+
+        ENGINE_INLINE void SetupScrollingGround()
+        {
+
+            //Ground Entity
+            auto grEntity = AddEntity("ground");
+            ////Scripting
+            auto& grScrollScript = grEntity.AddComponent<ScriptComponent>();
+            grScrollScript.BindScript<ScrollingGround>();
+            grScrollScript.name = "scrollingGround";
+            ////Transform
+            auto& grTransform = grEntity.AddComponent<TransformComponent>();
+            grTransform.translate = Vec2f(0.0f, 620);
+            ////RigidBody
+            grEntity.AddComponent<RigidbodyComponent>().body.velocity.x = -100.f;
+            ////Sprite
+            auto grAsset = m_assets.LoadTexture("C:/GameDev/C++/2DGameEngine/resources/ground.png", "ground", m_renderer);
+            auto& grSprite = grEntity.AddComponent<SpriteComponent>().sprite = grAsset->id;
+            ////Collider
+            auto& grCollider = grEntity.AddComponent<ColliderComponent>();
+            grCollider.collider = {0, 0, (float)grAsset->instance.width, (float)grAsset->instance.height};
         }
 
         template<typename T>

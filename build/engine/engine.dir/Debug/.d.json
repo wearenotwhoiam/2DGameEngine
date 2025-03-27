@@ -38,6 +38,7 @@
             "c:\\gamedev\\c++\\2dgameengine\\engine\\src\\scripts\\scriptinstance.h",
             "c:\\gamedev\\c++\\2dgameengine\\engine\\src\\ecs\\systems\\scriptsystem.h",
             "c:\\gamedev\\c++\\2dgameengine\\engine\\src\\scripts\\playercontroller.h",
+            "c:\\gamedev\\c++\\2dgameengine\\engine\\src\\scripts\\scrollingground.h",
             "c:\\gamedev\\c++\\2dgameengine\\engine\\src\\events\\system.h"
         ],
         "ImportedModules": [],

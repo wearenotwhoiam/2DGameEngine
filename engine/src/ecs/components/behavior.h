@@ -9,7 +9,7 @@ namespace Engine::ECS
         ENGINE_INLINE ScriptComponent() = default;
 
         template<typename T>
-        ENGINE_INLINE void Bind()
+        ENGINE_INLINE void BindScript()
         {
             instantiate = [](const ScriptProps& props)
             {
