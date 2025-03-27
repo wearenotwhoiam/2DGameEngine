@@ -10,32 +10,27 @@ namespace  Engine
             ENGINE_INFO("Player Script started");
         }
 
-        ENGINE_INLINE void OnCollision(ECS::Entity e)
+        ENGINE_INLINE void OnCollision(ECS::entityID e)
         {
-            ENGINE_INFO("Colliding with %d", e.GetID());
+            ENGINE_INFO("Colliding with %d", e);
+            auto& deadSprite = GetComponent<ECS::SpriteComponent>();
+            deadSprite.sprite = GetAsset<TextureAsset>("deadSprite")->id;
+
+            GetComponent<ECS::ColliderComponent>().disabled = true;
+            GetComponent<ECS::RigidbodyComponent>().disabled = true;
         }
 
         ENGINE_INLINE void OnUpdate(float dt)
         {
-            auto& t = GetComponent<ECS::TransformComponent>();
+            auto& rb = GetComponent<ECS::RigidbodyComponent>();
 
-            if(input::IsKey(SDL_SCANCODE_A))
+            if(input::IsKey(SDL_SCANCODE_SPACE))
             {
-                t.translate.x -= (speed * dt);
+                rb.body.SetForceY(-750.f);
             }
-            if(input::IsKey(SDL_SCANCODE_D))
+            else
             {
-                t.translate.x += (speed * dt);
-
-            }
-            if(input::IsKey(SDL_SCANCODE_W))
-            {
-                t.translate.y -= (speed * dt);
-
-            }
-            if(input::IsKey(SDL_SCANCODE_S))
-            {
-                t.translate.y += (speed * dt);
+                rb.body.SetForceY(0.f);
             }
         }
 

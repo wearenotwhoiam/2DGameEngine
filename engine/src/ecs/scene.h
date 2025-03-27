@@ -10,6 +10,7 @@
 
 #include "../scripts/playerController.h"
 #include "../scripts/scrollingGround.h"
+#include "../scripts/pipeSpawner.h"
 
 #include "assets/registry.h"
 
@@ -68,10 +69,6 @@ namespace Engine::ECS
 
         ENGINE_INLINE void SetupScene()
         {
-            //Player Sprites
-            auto flyingSprite = m_assets.LoadTexture("C:/GameDev/C++/2DGameEngine/resources/fly.png", "flyingSprite", m_renderer);
-            auto deadSprite = m_assets.LoadTexture("C:/GameDev/C++/2DGameEngine/resources/dead.png", "deadSprite", m_renderer);
-
             //Obstacle Sprites
             auto pipeSprite = m_assets.LoadTexture("C:/GameDev/C++/2DGameEngine/resources/pipe.png", "pipeSprite", m_renderer);
 
@@ -84,14 +81,41 @@ namespace Engine::ECS
             bgEntity.AddComponent<SpriteComponent>().sprite = bgSprite->id;
 
             SetupScrollingGround();
+            SetupPlayer();
+        }
+
+        ENGINE_INLINE void SetupPlayer()
+        {
+            //Player Sprites
+            auto flyingSprite = m_assets.LoadTexture("C:/GameDev/C++/2DGameEngine/resources/fly.png", "flyingSprite", m_renderer);
+            auto deadSprite = m_assets.LoadTexture("C:/GameDev/C++/2DGameEngine/resources/dead.png", "deadSprite", m_renderer);
+
+            auto player = AddEntity("player");
+            auto& playerScript = player.AddComponent<ECS::ScriptComponent>();
+            playerScript.name = "PlayerController";
+            playerScript.BindScript<PlayerController>();
+
+            auto& playerTrans = player.GetComponent<TransformComponent>();
+            playerTrans.translate = Vec2f(126,360);
+            playerTrans.scale = Vec2f(0.5f);
+
+            auto& playerRB = player.AddComponent<RigidbodyComponent>();
+            playerRB.body.gravityScale = 25.f;
+
+            player.AddComponent<SpriteComponent>().sprite = flyingSprite->id;
+
+            auto& playerCollider = player.AddComponent<ColliderComponent>();
+            playerCollider.collider = {0,0, 58, 38};
         }
 
         ENGINE_INLINE void SetupScrollingGround()
         {
-
-            //Ground Entity
-            auto grEntity = AddEntity("ground");
+             auto grEntity = AddEntity("ground");
             ////Scripting
+ 
+            auto& pipeSpawnerScript = grEntity.AddComponent<ScriptComponent>();
+            pipeSpawnerScript.BindScript<PipeSpawner>();
+            pipeSpawnerScript.name = "pipeSpawner";
             auto& grScrollScript = grEntity.AddComponent<ScriptComponent>();
             grScrollScript.BindScript<ScrollingGround>();
             grScrollScript.name = "scrollingGround";

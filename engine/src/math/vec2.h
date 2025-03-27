@@ -1,7 +1,7 @@
 #pragma once
 #include "../pch.h"
 
-namespace Engine::math
+namespace Engine::Math
 {
     template<typename T>
     struct Vec2
@@ -65,7 +65,7 @@ namespace Engine::math
 
 namespace Engine
 {
-    using Vec2u = math::Vec2<uint32_t>;
-    using Vec2f = math::Vec2<float>;
-    using Vec2i = math::Vec2<int>;
+    using Vec2u = Math::Vec2<uint32_t>;
+    using Vec2f = Math::Vec2<float>;
+    using Vec2i = Math::Vec2<int>;
 }
