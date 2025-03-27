@@ -67,6 +67,32 @@ protected:
             m_registry->AddComponent<ECS::InfoComponent>(entity);
             return ECS::Entity(entity,m_registry);
         }
+
+        ENGINE_INLINE void DestroyEntity()
+        {
+            m_registry->DestroyEntity(m_entity);
+        }
+
+        ENGINE_INLINE ECS::Entity FindEntity(const std::string& name)
+        {
+            for(auto& e: m_registry->ViewComponentOwners<ECS::InfoComponent>())
+            {
+                auto& infoComp = m_registry->GetComponent<ECS::InfoComponent>(e);
+
+                if(!infoComp.name.compare(name))
+                {
+                    return ECS::Entity(e, m_registry);
+                }
+            }
+
+            return ECS::Entity();
+        }
+
+        template<typename T>
+        ENGINE_INLINE T* GetAsset(const std::string& name)
+        {
+            return m_assets->Get<T>(name);
+        }
 private:
         ECS::entityID m_entity {INVALID_ID};
         ECS::Registry* m_registry {NULL};

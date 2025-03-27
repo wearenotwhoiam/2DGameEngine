@@ -11,7 +11,7 @@ namespace Engine::ECS
 
         uuid64 uuid = GenerateUUID();
         std::string name = "entity";
-        std::string tag = "dafault";
+        std::string tag = "default";
     };
 
     struct TransformComponent
