@@ -3,7 +3,7 @@
 
 namespace Engine
 {
-	struct engineConfig
+	struct EngineConfig
 	{
 		int width{ 0 };
 		int height{ 0 };
@@ -12,7 +12,7 @@ namespace Engine
 	};
 
 	//defined in game.exe
-	engineConfig CreateEngine();
+	EngineConfig CreateEngine();
 	
-	ENGINE_API void RunEngine(const engineConfig&);
+	ENGINE_API void RunEngine(const EngineConfig&);
 }

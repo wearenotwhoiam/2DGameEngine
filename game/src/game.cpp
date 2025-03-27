@@ -1,11 +1,12 @@
 #include <core/entry.h>
 
-Engine::engineConfig Engine::CreateEngine()
+Engine::EngineConfig Engine::CreateEngine()
 {
-	Engine::engineConfig config;
+	Engine::EngineConfig config;
+
+	config.title = "Flappy Terd";
 	config.version = "0.0.1";
-	config.title = "2DEngine";
+	config.width = 380;
 	config.height = 720;
-	config.width = 1080;
 	return config;
 }
