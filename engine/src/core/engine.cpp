@@ -36,7 +36,7 @@ namespace Engine
 		{
 			ENGINE_ERROR("%", TTF_GetError());
 		}
-		if (Mix_Init(MIX_INIT_MP3 | MIX_INIT_OGG) < 0 || Mix_OpenAudio(4410, MIX_DEFAULT_FORMAT, 2, 512))
+		if (Mix_Init(MIX_INIT_MP3 | MIX_INIT_OGG) < 0 || Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 		{
 			ENGINE_ERROR("%", Mix_GetError());
 		}
