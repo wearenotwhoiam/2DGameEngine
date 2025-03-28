@@ -13,6 +13,7 @@ namespace  Engine
         ENGINE_INLINE void OnCollision(ECS::entityID e)
         {
             ENGINE_INFO("Colliding with %d", e);
+            PlayAudio("boom");
             auto& deadSprite = GetComponent<ECS::SpriteComponent>();
             deadSprite.sprite = GetAsset<TextureAsset>("deadSprite")->id;
 

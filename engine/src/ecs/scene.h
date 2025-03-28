@@ -24,7 +24,7 @@ namespace Engine::ECS
            // RegisterSystem<ECS::TestSystem>();
             RegisterSystem<ECS::RigidbodySystem>();
             RegisterSystem<ECS::SpriteRendererSystem>();
-            //RegisterSystem<ECS::TextRendererSystem>();
+            RegisterSystem<ECS::TextRendererSystem>();
             //RegisterSystem<ECS::FrameAnimationSystem>();
             //RegisterSystem<ECS::TilemapRendererSystem>();
             
@@ -69,11 +69,12 @@ namespace Engine::ECS
 
         ENGINE_INLINE void SetupScene()
         {
+             //Sounds
+             m_assets.LoadMusic("C:/GameDev/C++/2DGameEngine/resources/song.mp3", "music");
+             m_assets.LoadAudio("C:/GameDev/C++/2DGameEngine/resources/boom.wav", "boom");
+
             //Obstacle Sprites
             auto pipeSprite = m_assets.LoadTexture("C:/GameDev/C++/2DGameEngine/resources/pipe.png", "pipeSprite", m_renderer);
-
-            //Text Font
-            auto fontSprite = m_assets.LoadFont("C:/GameDev/C++/2DGameEngine/resources/font.ttf", "font", 30);
 
             //Background Entity
             auto bgEntity = AddEntity("background");
@@ -86,8 +87,10 @@ namespace Engine::ECS
             spawnerScript.BindScript<PipeSpawner>();
             spawnerScript.name = "piperSpawner";
 
+           
             SetupScrollingGround();
             SetupPlayer();
+            SetupScore();
         }
 
         ENGINE_INLINE void SetupPlayer()
@@ -114,12 +117,23 @@ namespace Engine::ECS
             playerCollider.collider = {0,0, 58, 38};
         }
 
+        ENGINE_INLINE void SetupScore()
+        {
+            //Text Font
+            auto fontSprite = m_assets.LoadFont("C:/GameDev/C++/2DGameEngine/resources/font.ttf", "font", 30);
+            auto score = AddEntity("score");
+            auto& scoreTr = score.GetComponent<TransformComponent>();
+            scoreTr.translate = Vec2f(120,20);
+            auto& scoreText = score.AddComponent<TextComponent>();
+            scoreText.text = "Score: 0";
+            scoreText.font = fontSprite->id;
+        }
         ENGINE_INLINE void SetupScrollingGround()
         {
             //Ground Entity
             auto grEntity = AddEntity("ground");
             ////Scripting
-            
+
             auto& grScrollScript = grEntity.AddComponent<ScriptComponent>();
             grScrollScript.BindScript<ScrollingGround>();
             grScrollScript.name = "scrollingGround";

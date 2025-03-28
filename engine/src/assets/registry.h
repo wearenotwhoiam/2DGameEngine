@@ -116,7 +116,45 @@ namespace Engine
             return asset;
         }
 
-       
+        ENGINE_INLINE AudioAsset* LoadAudio(const std::string& src, const std::string& name)
+        {
+            AudioClip audio;
+            audio.data = Mix_LoadWAV(src.c_str());
+            audio.filename = src;
+
+            if(!audio.data)
+            {
+                ENGINE_ERROR("%s", Mix_GetError());
+                return NULL;
+            }
+
+            auto asset = new AudioAsset();
+            asset->instance = audio;
+            asset->name = name;
+
+            m_data[TypeID<AudioAsset>()].push_back(asset);
+            return asset;    
+        }
+
+        ENGINE_INLINE MusicAsset* LoadMusic(const std::string& src, const std::string& name)
+        {
+            MusicTrack track;
+            track.data = Mix_LoadMUS(src.c_str());
+            track.filename = src;
+
+            if(!track.data)
+            {
+                ENGINE_ERROR("%s", Mix_GetError());
+                return NULL;
+            }
+
+            auto asset = new MusicAsset();
+            asset->instance = track;
+            asset->name = name;
+
+            m_data[TypeID<MusicAsset>()].push_back(asset);
+            return asset;
+        }
         private:
         std::unordered_map<assetTypeID, std::vector<Asset*>> m_data;
     };

@@ -93,6 +93,21 @@ protected:
         {
             return m_assets->GetAsset<T>(name);
         }
+
+        ENGINE_INLINE void PlayAudio(std::string name, int channel = -1, int loops = 0, int vol = 50)
+        {
+            auto& chunk = m_assets->GetAsset<AudioAsset>(name)->instance.data;
+            Mix_VolumeChunk(chunk, vol);
+            Mix_PlayChannel(channel, chunk, loops);
+        }
+
+        ENGINE_INLINE void PlayMusic(std::string name, int channel = -1, int loops = 0, int vol = 50)
+        {
+            auto& music = m_assets->GetAsset<MusicAsset>(name)->instance.data;
+            Mix_VolumeMusic(128);
+            ENGINE_INFO("%d", (Mix_PlayMusic(music, loops) < 0));
+
+        }
 private:
         ECS::entityID m_entity {INVALID_ID};
         ECS::Registry* m_registry {NULL};

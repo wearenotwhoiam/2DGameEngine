@@ -5,6 +5,10 @@ namespace Engine
 {
     struct PipeSpawner : ScriptInstance
     {
+        ENGINE_INLINE void OnStart()
+        {
+            PlayMusic("music", -1, 5, 100);
+        }
         ENGINE_INLINE void OnUpdate(float dt)
         {
             if(gameOver) return;
@@ -18,6 +22,11 @@ namespace Engine
                 auto& grdRB = ground.GetComponent<ECS::RigidbodyComponent>();
                 grdRB.disabled = true;
 
+                //Game Over Text
+                auto scr = FindEntity("score");
+                auto& gameoverText = scr.GetComponent<ECS::TextComponent>();
+                gameoverText.text = "GAME OVER";
+                
                 //stop pipe motion
                 for(auto& pipe : pipes)
                 {
@@ -85,6 +94,15 @@ namespace Engine
                 {
                     it = pipes.erase(it);
                     continue;
+                }
+
+                //destroy if out of the screen and set score
+                auto& pipeTr = pipe.GetComponent<ECS::TransformComponent>();
+                if(pipeTr.translate.x < -50)
+                {
+                    pipe.Destroy();
+                    auto& scoreText = FindEntity("score").GetComponent<ECS::TextComponent>();
+                    scoreText.text = "Score: " + std::to_string(++score/2);
                 }
                 it++;
             }
