@@ -50,12 +50,12 @@ namespace Engine::ECS
         {
             for(auto& sys : m_systems) {sys->Update(dt);}
 
-            SDL_SetRenderDrawColor(m_renderer, 0,0,0,255);
-            for(auto& e : m_registry.ViewComponentOwners<ColliderComponent>())
-            {
-                auto& c = m_registry.GetComponent<ColliderComponent>(e);
-                SDL_RenderDrawRectF(m_renderer, &c.collider);
-            }
+            // SDL_SetRenderDrawColor(m_renderer, 0,0,0,255);
+            // for(auto& e : m_registry.ViewComponentOwners<ColliderComponent>())
+            // {
+            //     auto& c = m_registry.GetComponent<ColliderComponent>(e);
+            //     SDL_RenderDrawRectF(m_renderer, &c.collider);
+            // }
 
             SDL_SetRenderDrawColor(m_renderer, 255,255,255,255);
 
